@@ -34,3 +34,18 @@ def main():
                 # Run the password through the checker
                 rules = checker.check(pwd)
                 score = checker.score(rules)
+                 # If all 5 rules pass, accept the password
+                if score == 5:
+                    print("\nPassword accepted!")
+                    checker.pretty_print(rules)
+                    break
+                else:
+                    # Show which rules failed so the user can fix them
+                    print("\nPassword does NOT meet the requirements:")
+                    checker.pretty_print(rules)
+                    print("\nPlease try again.")
+
+            # Once a valid password is entered, show the strength label
+            label = checker.strength_label(score)
+            print(f"\nStrength score: {score}/5")
+            print(f"Password strength: {label}")

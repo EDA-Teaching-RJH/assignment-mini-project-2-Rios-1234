@@ -1,4 +1,6 @@
 import re
+import random
+import string
 from password import Password
 
 class PasswordChecker:

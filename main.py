@@ -49,3 +49,31 @@ def main():
             label = checker.strength_label(score)
             print(f"\nStrength score: {score}/5")
             print(f"Password strength: {label}")
+              # Save the valid password to history
+            checker.save_to_history(pwd)
+            print("Password saved to history.txt")
+
+        
+        # option 2 — VIEW HISTORY
+
+        elif choice == "2":
+            # Display all previously saved passwords
+            checker.view_history()
+
+      
+        # option 3 — QUIT PROGRAM
+      
+        elif choice == "3":
+            print("Goodbye!")
+            break
+
+    
+        # invalid input
+    
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
+
+# Standard Python entry point — ensures main() only runs
+# when this file is executed directly, not imported.
+if __name__ == "__main__":
+    main()

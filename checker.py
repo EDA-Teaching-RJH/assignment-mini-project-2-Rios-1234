@@ -12,3 +12,21 @@ class PasswordChecker:
     def check(self, password: Password) -> dict:
         # Get the raw text of the password from the Password object.
         raw = password.raw
+          # Each rule is checked using either length or a regex pattern.
+        # The dictionary maps rule names to True/False results.
+        rules = {
+            "length >= 8": len(raw) >= 8,
+            "uppercase letter": bool(re.search(r"[A-Z]", raw)),
+            "lowercase letter": bool(re.search(r"[a-z]", raw)),
+            "digit": bool(re.search(r"\d", raw)),
+            "symbol": bool(re.search(r"[!@#$%^&*(),.?\":{}|<>]", raw)),
+        }
+
+        # Return the dictionary so the caller can inspect each rule.
+        return rules
+
+    def score(self, rules: dict) -> int:
+        # Convert True/False values into integers and sum them.
+        # This gives a score from 0 to 5.
+        return sum(rules.values())
+

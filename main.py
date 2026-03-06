@@ -1,4 +1,5 @@
-
+from password import password 
+from checker import password
 def main():
     # Create a PasswordChecker instance that will handle:
     # - rule checking
@@ -12,10 +13,10 @@ def main():
         print("\nPassword Checker Menu")
         print("1. Check a password")
         print("2. View password history")
-        print("3. Quit")
+        print("3. generate a random password")
 
         # Get the user's menu choice
-        choice = input("Choose an option (1-3): ")
+        choice = input("Choose an option (1-4): ")
     if choice == "1":
 
             # Show the user what rules their password must meet
@@ -63,13 +64,21 @@ def main():
       
         # option 3 — QUIT PROGRAM
       
-        elif choice == "3":
+       elif choice == "3":
+            print("\nGenerating a strong random password...")
+            generated = checker.generate_random_password()
+
+            print(f"\nYour generated password: {generated}")
+
+            pwd = Password(generated)
+            checker.save_to_history(pwd)
+            print("Password saved to history.txt")
+
+            # option 4 — QUIT
+        elif choice == "4":
             print("Goodbye!")
             break
 
-    
-        # invalid input
-    
         else:
             print("Invalid choice. Please enter 1, 2, or 3.")
 

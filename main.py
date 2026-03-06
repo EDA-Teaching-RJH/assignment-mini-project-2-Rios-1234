@@ -16,3 +16,21 @@ def main():
 
         # Get the user's menu choice
         choice = input("Choose an option (1-3): ")
+    if choice == "1":
+
+            # Show the user what rules their password must meet
+            print("\nYour password must meet ALL of these rules:")
+            print("At least 8 characters long")
+            print("At least one uppercase letter")
+            print("At least one lowercase letter")
+            print("At least one digit")
+            print("At least one symbol")
+
+            # Loop until the user enters a password that passes all rules
+            while True:
+                pwd_input = input("\nEnter a password: ")
+                pwd = Password(pwd_input)
+
+                # Run the password through the checker
+                rules = checker.check(pwd)
+                score = checker.score(rules)

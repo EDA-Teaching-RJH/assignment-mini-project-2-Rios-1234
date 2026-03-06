@@ -1,5 +1,5 @@
 
-ef main():
+def main():
     # Create a PasswordChecker instance that will handle:
     # - rule checking
     # - scoring

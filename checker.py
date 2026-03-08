@@ -43,4 +43,23 @@ class PasswordChecker:
         # Each password is stored on its own line.
         with open(self.history_file, "a") as f:
             f.write(password.raw + "\n")
+             def view_history(self):
+        try:
+            # Attempt to open and read the history file.
+            with open(self.history_file, "r") as f:
+                lines = f.readlines()
+
+                # If the file exists but is empty, notify the user.
+                if not lines:
+                    print("History is empty.")
+                else:
+                    print("\nPassword History:")
+                    for line in lines:
+                        # Strip newline characters before printing.
+                        print(line.strip())
+
+        except FileNotFoundError:
+            # If the file does not exist yet, inform the user.
+            print("No history file found.")
+
 

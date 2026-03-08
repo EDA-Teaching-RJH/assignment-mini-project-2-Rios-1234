@@ -29,4 +29,18 @@ class PasswordChecker:
         # Convert True/False values into integers and sum them.
         # This gives a score from 0 to 5.
         return sum(rules.values())
+         def strength_label(self, score: int) -> str:
+        # Convert the numeric score into readable label.
+        if score <= 2:
+            return "Weak"
+        elif score in (3, 4):
+            return "Medium"
+        else:
+            return "Strong"
+
+    def save_to_history(self, password: Password):
+        # Append the raw password to the history file.
+        # Each password is stored on its own line.
+        with open(self.history_file, "a") as f:
+            f.write(password.raw + "\n")
 

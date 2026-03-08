@@ -82,5 +82,16 @@ class PasswordChecker:
             random.choice(digits),
             random.choice(symbols),
         ]
+          # Combine all characters into one pool for filling the rest.
+        all_chars = upper + lower + digits + symbols
+
+        # Add random characters until the desired length is reached.
+        password_chars += random.choices(all_chars, k=length - 4)
+
+        # Shuffle to avoid predictable ordering (e.g., always U-L-D-S).
+        random.shuffle(password_chars)
+
+        # Join the list into a final password string.
+        return "".join(password_chars)
 
 

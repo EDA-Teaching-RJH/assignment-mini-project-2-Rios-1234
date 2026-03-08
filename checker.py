@@ -66,5 +66,21 @@ class PasswordChecker:
         print("\nPassword Check Results:")
         for rule, passed in rules.items():
             print(f"{rule}: {passed}")
+             # Random password genarator 
+
+    def generate_random_password(self, length=12):
+        # Define character pools for each requirement.
+        upper = string.ascii_uppercase
+        lower = string.ascii_lowercase
+        digits = string.digits
+        symbols = "!@#$%^&*(),.?\":{}|<>"
+
+        # Ensure the password contains at least one of each required type.
+        password_chars = [
+            random.choice(upper),
+            random.choice(lower),
+            random.choice(digits),
+            random.choice(symbols),
+        ]
 
 

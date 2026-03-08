@@ -61,5 +61,10 @@ class PasswordChecker:
         except FileNotFoundError:
             # If the file does not exist yet, inform the user.
             print("No history file found.")
+             def pretty_print(self, rules: dict):
+        # Display each rule and whether it passed.
+        print("\nPassword Check Results:")
+        for rule, passed in rules.items():
+            print(f"{rule}: {passed}")
 
 

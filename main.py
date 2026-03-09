@@ -146,5 +146,13 @@ def main():
                     cowsay.tux("Try again,!")
                     print("\nPassword does NOT meet the requirements:")
                     checker.pretty_print(rules)
+                     # Show final strength label
+            label = checker.strength_label(score)
+            print(f"\nStrength score: {score}/5")
+            print(f"Password strength: {label}")
+
+            # Save password to history
+            checker.save_to_history(pwd, score, label)
+            print("Password saved to history.csv")
 
 

@@ -109,4 +109,24 @@ def main():
             cowsay.ghostbusters("Unknown command!")
             print("Valid commands: history, generate, check, strength, demo,clear history,stats")
             return
+            while True:
+        # Display menu options
+        print("\nPassword Checker Menu")
+        print("1. Check a password")
+        print("2. View password history")
+        print("3. Generate a random strong password")
+        print("4. Clear password history")
+        print("5. Quit")
+
+        choice = input("Choose an option (1-5): ")
+
+        # Option 1: Check password
+        
+        if choice == "1":
+            print("\nYour password must meet ALL of these rules:")
+            print("At least 8 characters long")
+            print("At least one uppercase letter")
+            print("At least one lowercase letter")
+            print("At least one digit")
+            print("At least one symbol")
 

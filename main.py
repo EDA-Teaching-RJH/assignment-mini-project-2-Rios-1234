@@ -154,5 +154,23 @@ def main():
             # Save password to history
             checker.save_to_history(pwd, score, label)
             print("Password saved to history.csv")
+             # Option 2: View history
+       
+        elif choice == "2":
+            cowsay.stegosaurus("Here are your past passwords!")
+            checker.view_history()
+
+      
+        # Option 3: Generate password
+        
+        elif choice == "3":
+            cowsay.dragon("Forging a mighty password...")
+            generated = checker.generate_random_password()
+
+            print(f"\nYour generated password: {generated}")
+
+            pwd = Password(generated)
+            checker.save_to_history(pwd, 5, "Strong")
+            print("Password saved to history.csv")
 
 

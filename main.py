@@ -45,3 +45,18 @@ def main():
             print(f"\nScore: {score}/5")
             print(f"Strength: {label}")
             return
+             # Show only the strength label (no rule breakdown)
+        elif cmd == "strength":
+            if len(sys.argv) < 3:
+                print("Usage: python main.py strength <password>")
+                return
+
+            raw = sys.argv[2]
+            pwd = Password(raw)
+
+            rules = checker.check(pwd)
+            score = checker.score(rules)
+            label = checker.strength_label(score)
+
+            cowsay.tux(f"Strength: {label}")
+            return

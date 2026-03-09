@@ -129,4 +129,22 @@ def main():
             print("At least one lowercase letter")
             print("At least one digit")
             print("At least one symbol")
+             # Loop until user enters a valid password
+            while True:
+                pwd_input = input("\nEnter a password: ")
+                pwd = Password(pwd_input)
+
+                rules = checker.check(pwd)
+                score = checker.score(rules)
+
+                if score == 5:
+                    cowsay.cow("Moo! Strong password!")
+                    print("\nPassword accepted!")
+                    checker.pretty_print(rules)
+                    break
+                else:
+                    cowsay.tux("Try again,!")
+                    print("\nPassword does NOT meet the requirements:")
+                    checker.pretty_print(rules)
+
 

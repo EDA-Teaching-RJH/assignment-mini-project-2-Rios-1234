@@ -34,3 +34,14 @@ def main():
 
             raw = sys.argv[2]
             pwd = Password(raw)
+             # Run password through all rules
+            rules = checker.check(pwd)
+            score = checker.score(rules)
+            label = checker.strength_label(score)
+
+            cowsay.cow("Password check results!")
+            checker.pretty_print(rules)
+
+            print(f"\nScore: {score}/5")
+            print(f"Strength: {label}")
+            return

@@ -71,4 +71,20 @@ def main():
             score = checker.score(rules)
             label = checker.strength_label(score)
             print(f"Score: {score}/5 | Strength: {label}")
+        # Demo: generating a password
+            print("\n--- DEMO: Generating a password ---")
+            generated = checker.generate_random_password()
+            print(f"Generated: {generated}")
+
+            # Demo: saving to history
+            print("\n--- DEMO: Saving to history ---")
+            checker.save_to_history(Password(generated), 5, "Strong")
+            print("Saved to history.csv")
+
+            # Demo: showing stats
+            print("\n--- DEMO: Showing stats ---")
+            checker.show_stats()
+
+            cowsay.tux("Demo complete!")
+            return
 

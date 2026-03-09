@@ -60,3 +60,15 @@ def main():
 
             cowsay.tux(f"Strength: {label}")
             return
+             elif cmd == "demo":
+            cowsay.beavis("Welcome to demo mode!")
+
+            # Demo: checking a password
+            print("\n--- DEMO: Checking a password ---")
+            pwd = Password("Aa1!demo")
+            rules = checker.check(pwd)
+            checker.pretty_print(rules)
+            score = checker.score(rules)
+            label = checker.strength_label(score)
+            print(f"Score: {score}/5 | Strength: {label}")
+

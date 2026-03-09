@@ -60,6 +60,23 @@ def main():
 
             cowsay.tux(f"Strength: {label}")
             return
+             # Show statistics about past passwords
+        elif cmd == "stats":
+            cowsay.turkey("Password statistics!")
+            checker.show_stats()
+            return
+            # Clear password history (CLI version)
+        elif cmd == "clear-history":
+            confirm = input("Are you sure you want to clear history? (y/n): ").lower()
+            if confirm == "y":
+                cowsay.ghostbusters("Clearing history!")
+                checker.clear_history()
+                print("History cleared.")
+            else:
+                print("Cancelled.")
+            return
+            
+            #Demo mode starts here
              elif cmd == "demo":
             cowsay.beavis("Welcome to demo mode!")
 
@@ -86,5 +103,10 @@ def main():
             checker.show_stats()
 
             cowsay.tux("Demo complete!")
+            return
+         # Unknown command entered
+        else:
+            cowsay.ghostbusters("Unknown command!")
+            print("Valid commands: history, generate, check, strength, demo,clear history,stats")
             return
 

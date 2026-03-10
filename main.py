@@ -189,6 +189,15 @@ def main():
         elif choice == "5":
             cowsay.turkey("Goodbye!")
             break
+              # Invalid input
+       
+        else:
+            cowsay.ghostbusters("Invalid choice!")
+            print("Please enter 1, 2, 3, 4, or 5.")
+
+
+if __name__ == "__main__":
+    main()
 
 
 

@@ -172,5 +172,23 @@ def main():
             pwd = Password(generated)
             checker.save_to_history(pwd, 5, "Strong")
             print("Password saved to history.csv")
+            # Option 4: Clear history
+        
+        elif choice == "4":
+            confirm = input("Are you sure you want to clear history? (y/n): ").lower()
+            if confirm == "y":
+                cowsay.ghostbusters("Clearing history!")
+                checker.clear_history()
+                print("History cleared.")
+            else:
+                print("Cancelled.")
+
+   
+        # Option 5: Quit program
+        
+        elif choice == "5":
+            cowsay.turkey("Goodbye!")
+            break
+
 
 

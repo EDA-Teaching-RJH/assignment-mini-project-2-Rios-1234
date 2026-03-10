@@ -121,39 +121,43 @@ def main():
         choice = input("Choose an option (1-5): ")
 
         # Option 1: Check password
-        
-        if choice == "1":
-            print("\nYour password must meet ALL of these rules:")
-            print("At least 8 characters long")
-            print("At least one uppercase letter")
-            print("At least one lowercase letter")
-            print("At least one digit")
-            print("At least one symbol")
-             # Loop until user enters a valid password
-            while True:
-                pwd_input = input("\nEnter a password: ")
-                pwd = Password(pwd_input)
+     if choice == "1":
+    # Tell the user they can enter ANY password (weak or strong)
+    print("\nEnter any password. It will be scored from 0–5:")
 
-                rules = checker.check(pwd)
-                score = checker.score(rules)
+    # Ask the user to type a password
+    pwd_input = input("\nEnter a password: ")
 
-                if score == 5:
-                    cowsay.cow("Moo! Strong password!")
-                    print("\nPassword accepted!")
-                    checker.pretty_print(rules)
-                    break
-                else:
-                    cowsay.tux("Try again,!")
-                    print("\nPassword does NOT meet the requirements:")
-                    checker.pretty_print(rules)
-                     # Show final strength label
-            label = checker.strength_label(score)
-            print(f"\nStrength score: {score}/5")
-            print(f"Password strength: {label}")
+    # Wrap the raw text in your Password class
+    # This lets the checker apply rules to it
+    pwd = Password(pwd_input)
 
-            # Save password to history
-            checker.save_to_history(pwd, score, label)
-            print("Password saved to history.csv")
+    # Run the password through all rule checks (uppercase, length, etc.)
+    rules = checker.check(pwd)
+
+    # Convert the rule results into a numeric score (0–5)
+    score = checker.score(rules)
+
+    # Convert the score into a human‑friendly label (Weak, Medium, Strong)
+    label = checker.strength_label(score)
+
+    # Fun cowsay message to show results are coming
+    cowsay.cow("Password results:")
+
+    # Print each rule and whether it passed or failed
+    checker.pretty_print(rules)
+
+    # Show the final numeric score
+    print(f"\nStrength score: {score}/5")
+
+    # Show the strength label (Weak / Medium / Strong)
+    print(f"Password strength: {label}")
+
+    # Save the password, score, and label into history.csv
+    checker.save_to_history(pwd, score, label)
+
+    # Confirm to the user that it was saved
+    print("Password saved to history.csv")
              # Option 2: View history
        
         elif choice == "2":

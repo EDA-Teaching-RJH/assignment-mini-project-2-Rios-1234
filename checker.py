@@ -60,3 +60,12 @@ class PasswordChecker:
         print("\nPassword Check Results:")  # Header
         for rule, passed in rules.items():  # Loop through rule dictionary
             print(f"{rule}: {passed}")      # Print rule name and result
+            # History (CSV STORAGE)
+    
+    def save_to_history(self, password: Password, score: int, label: str):
+        """
+        Append a password entry to the CSV history file.
+        """
+        with open(self.history_file, "a", newline="") as f:   # Open file in append mode
+            writer = csv.writer(f)                            # Create CSV writer
+            writer.writerow([password.raw, score, label])     # Write one row

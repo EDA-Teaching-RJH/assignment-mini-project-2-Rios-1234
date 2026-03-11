@@ -123,4 +123,32 @@ class PasswordChecker:
 
         except FileNotFoundError:
             print("No history file found.")
+            
+    def generate_random_password(self, length=12):
+        """
+        Generate a random password containing at least one uppercase,
+        one lowercase, one digit, and one symbol.
+        """
+        upper = string.ascii_uppercase          # A–Z
+        lower = string.ascii_lowercase          # a–z
+        digits = string.digits                  # 0–9
+        symbols = "!@#$%^&*(),.?\":{}|<>"       # Allowed symbols
+
+        # Ensure password contains at least one of each required type
+        password_chars = [
+            random.choice(upper),               # One uppercase
+            random.choice(lower),               # One lowercase
+            random.choice(digits),              # One digit
+            random.choice(symbols),             # One symbol
+        ]
+
+        # Combine all character sets into one big pool
+        all_chars = upper + lower + digits + symbols
+
+        # Fill remaining characters randomly
+        password_chars += random.choices(all_chars, k=length - 4)
+
+        random.shuffle(password_chars)          # Shuffle to avoid predictable order
+
+        return "".join(password_chars)          # Convert list → string and return
 

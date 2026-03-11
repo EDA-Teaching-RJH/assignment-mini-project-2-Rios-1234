@@ -69,3 +69,22 @@ class PasswordChecker:
         with open(self.history_file, "a", newline="") as f:   # Open file in append mode
             writer = csv.writer(f)                            # Create CSV writer
             writer.writerow([password.raw, score, label])     # Write one row
+            def view_history(self):
+        """
+        Print all stored password entries.
+        """
+        try:
+            with open(self.history_file, "r") as f:   # Open file for reading
+                reader = csv.reader(f)               # Create CSV reader
+                rows = list(reader)                  # Convert to list for easier handling
+
+            if len(rows) <= 1:                       # Only header exists
+                print("History is empty.")
+                return
+
+            print("\nPassword History:")             # Header
+            for row in rows[1:]:                     # Skip header row
+                print(f"Password: {row[0]} | Score: {row[1]} | Label: {row[2]}")
+
+        except FileNotFoundError:                    # If file somehow missing
+            print("No history file found.")

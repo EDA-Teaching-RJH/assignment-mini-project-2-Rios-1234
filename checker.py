@@ -49,3 +49,14 @@ class PasswordChecker:
             return "Medium"
         else:                   # 5 points
             return "Strong"
+           
+    #This is prettry printing 
+  
+
+    def pretty_print(self, rules: dict):
+        """
+        Print each rule and whether it passed.
+        """
+        print("\nPassword Check Results:")  # Header
+        for rule, passed in rules.items():  # Loop through rule dictionary
+            print(f"{rule}: {passed}")      # Print rule name and result

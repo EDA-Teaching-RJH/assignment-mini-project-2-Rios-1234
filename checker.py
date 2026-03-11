@@ -95,3 +95,32 @@ class PasswordChecker:
         with open(self.history_file, "w", newline="") as f:   # "w" overwrites file
             writer = csv.writer(f)
             writer.writerow(["password", "score", "label"])    # Write header only
+             def show_stats(self):
+        """
+        Display statistics about all stored passwords.
+        """
+        try:
+            with open(self.history_file, "r") as f:   # Open file
+                reader = csv.reader(f)
+                rows = list(reader)[1:]               # Skip header row
+
+            if not rows:                              # No data
+                print("No history available.")
+                return
+
+            total = len(rows)                         # Total number of entries
+            weak = sum(1 for r in rows if r[2] == "Weak")      # Count weak passwords
+            medium = sum(1 for r in rows if r[2] == "Medium")  # Count medium passwords
+            strong = sum(1 for r in rows if r[2] == "Strong")  # Count strong passwords
+            avg_score = sum(int(r[1]) for r in rows) / total   # Compute average score
+
+            # Print statistics
+            print(f"Total passwords: {total}")
+            print(f"Weak: {weak}")
+            print(f"Medium: {medium}")
+            print(f"Strong: {strong}")
+            print(f"Average score: {avg_score:.2f}")
+
+        except FileNotFoundError:
+            print("No history file found.")
+

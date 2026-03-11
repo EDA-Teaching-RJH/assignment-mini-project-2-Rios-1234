@@ -88,3 +88,10 @@ class PasswordChecker:
 
         except FileNotFoundError:                    # If file somehow missing
             print("No history file found.")
+             def clear_history(self):
+        """
+        Reset the CSV file to only contain the header row.
+        """
+        with open(self.history_file, "w", newline="") as f:   # "w" overwrites file
+            writer = csv.writer(f)
+            writer.writerow(["password", "score", "label"])    # Write header only

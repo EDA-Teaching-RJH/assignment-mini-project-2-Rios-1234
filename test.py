@@ -17,3 +17,17 @@ def test_check_all_rules_pass():
     assert rules["lowercase letter"] is True
     assert rules["digit"] is True
     assert rules["symbol"] is True
+    def test_score():
+    # Test scoring logic with a mix of passing/failing rules
+    checker = PasswordChecker("test_history.csv")
+
+    rules = {
+        "length >= 8": True,
+        "uppercase letter": True,
+        "lowercase letter": True,
+        "digit": False,
+        "symbol": False,
+    }
+
+    # Expect 3 passing rules
+    assert checker.score(rules) == 3

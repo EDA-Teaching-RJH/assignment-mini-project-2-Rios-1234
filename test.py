@@ -31,3 +31,28 @@ def test_check_all_rules_pass():
 
     # Expect 3 passing rules
     assert checker.score(rules) == 3
+    def test_strength_label():
+    # Ensure score → label mapping works correctly
+    checker = PasswordChecker("test_history.csv")
+
+    assert checker.strength_label(1) == "Weak"
+    assert checker.strength_label(3) == "Medium"
+    assert checker.strength_label(5) == "Strong"
+
+
+def test_generate_random_password():
+    # Test that generated passwords meet minimum requirements
+    checker = PasswordChecker("test_history.csv")
+    pwd = checker.generate_random_password()
+
+    # Length requirement
+    assert len(pwd) == 12
+
+    # Character-type requirements
+    assert any(c.isupper() for c in pwd)
+    assert any(c.islower() for c in pwd)
+    assert any(c.isdigit() for c in pwd)
+    assert any(c in "!@#$%^&*(),.?\":{}|<>" for c in pwd)
+ 
+    
+

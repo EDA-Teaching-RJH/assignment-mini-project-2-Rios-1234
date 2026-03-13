@@ -53,6 +53,35 @@ def test_generate_random_password():
     assert any(c.islower() for c in pwd)
     assert any(c.isdigit() for c in pwd)
     assert any(c in "!@#$%^&*(),.?\":{}|<>" for c in pwd)
+    # CSV HISTORY TESTS
+# These tests ensure that saving, clearing, and reading
+# password history works correctly.
+
+
+def test_save_to_history_creates_csv():
+    filename = "test_history.csv"
+
+    # Remove old test file if it exists
+    if os.path.exists(filename):
+        os.remove(filename)
+
+    checker = PasswordChecker(filename)
+
+    # Save a password entry
+    checker.save_to_history(Password("Test123!"), 5, "Strong")
+
+    # CSV file should now exist
+    assert os.path.exists(filename)
+
+    # Read CSV contents
+    with open(filename, "r") as f:
+        rows = list(csv.reader(f))
+
+    # First row = header
+    assert rows[0] == ["password", "score", "label"]
+
+    # Second row = saved password
+    assert rows[1] == ["Test123!", "5", "Strong"]
  
     
 

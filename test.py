@@ -82,6 +82,21 @@ def test_save_to_history_creates_csv():
 
     # Second row = saved password
     assert rows[1] == ["Test123!", "5", "Strong"]
+    def test_clear_history():
+    filename = "test_history.csv"
+    checker = PasswordChecker(filename)
+
+    # Add a password to ensure file has content
+    checker.save_to_history(Password("Test123!"), 5, "Strong")
+
+    # Clear the file
+    checker.clear_history()
+
+    # After clearing, only the header row should remain
+    with open(filename, "r") as f:
+        rows = list(csv.reader(f))
+
+    assert rows == [["password", "score", "label"]]
  
     
 
